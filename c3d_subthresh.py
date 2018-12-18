@@ -6,6 +6,13 @@
 ##   select linuxAUCFile, linuxlabelFile from DFdcelitt.manualdceuid;
 ## - run command through paramiko.SSHClient()
 ## if there is error (ex: files not exit) during executtion loop, it will bring out and continue next iteration.
+import os,cgi,json,time,datetime,base64,MySQLdb,MySQLdb.cursors,paramiko
+from pprint import pprint
+import sys
+import paramiko
+import getpass
+import random
+
 
 user_name="xxx"
 password = "xxxx"
