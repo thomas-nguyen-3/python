@@ -13,6 +13,18 @@ import paramiko
 import getpass
 import random
 
+##Database connection
+db = MySQLdb.connect(host='scrdep2.mdanderson.org',    # your host, usually localhost
+                     user="xxxx",         # your username
+                     passwd="xxxx",  # your password
+                     db="DFdcelitt")        # name of the data base
+
+
+##NORMAL CURSOR: DATA SAVE IN ARRAY -
+cur = db.cursor()
+##DICTIONARY CURSOR: DATA SAVE AS DICTIONARY (SAVE TIME) - USE THIS WHEN NEED DICTIONARY OUTPUT
+d_cur = db.cursor(MySQLdb.cursors.DictCursor)
+######
 
 user_name="xxx"
 password = "xxxx"
@@ -22,6 +34,9 @@ print
 ssh_client=paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh_client.connect(hostname=ip, username=user_name, password=password)
+
+##CALL TO RUN THE MAIN CODE
+action=form_dict.get('action','c3d_subthresh')
 
 ## c3d linuxAUCFile -thresh .15 inf 1 0 -o linuxlabelFile 
 elif action=="c3d_subthresh":
